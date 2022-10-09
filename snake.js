@@ -6,15 +6,18 @@ const snakeBody = [{ x: 11, y: 11}];
 let newSegments = 0;
 
 export function update() {
-    // console.log(snakeBody[0])
+    addSegments()
+
     // This is is taking keyboard input from input.js
     const inputDirection = getInputDirection()
+
     // This for loop is starting at the 2nd to last segment of snakeBody, and looping backwards. Each iteration is
     // essentially putting the last segment of snakeBody into the position of the second last segment. This continues for
     // every segment of snakeBody except for the first segment (the head)
     for (let i = snakeBody.length - 2; i >= 0; i--) {
         snakeBody[i + 1] = { ...snakeBody[i] }
     }
+
     // This is determining the direction and movement of the head of snakeBody based on keyboard input
     snakeBody[0].x += inputDirection.x
     snakeBody[0].y += inputDirection.y
@@ -46,3 +49,13 @@ function equalPositions(pos1, pos2) {
     return pos1.x === pos2.x && pos1.y === pos2.y
 }
 
+function addSegments() {
+    // This loop essentially runs for the amount of times of the value of newSegments. It's going to append a new element
+    // onto the end of our snakeBody array. It's taking the last element of snakeBody and duplicating it onto the end of 
+    // the array
+    for (let i = 0; i < newSegments; i++ ) {
+        snakeBody.push({ ...snakeBody[snakeBody.length - 1] })
+    }
+
+    newSegments = 0;
+}
