@@ -1,6 +1,6 @@
 import { getInputDirection } from "./input.js";
 
-export const snakeSpeed = 10;
+export let snakeSpeed = 6;
 // snakeBody is an array of objects, each object being a rendered segment in the snake's body
 export const snakeBody = [{ x: 11, y: 11}];
 let newSegments = 0;
@@ -21,6 +21,9 @@ export function update() {
     // This is determining the direction and movement of the head of snakeBody based on keyboard input
     snakeBody[0].x += inputDirection.x
     snakeBody[0].y += inputDirection.y
+
+    increaseSnakeSpeed()
+    console.log(snakeSpeed)
 }
 
 export function draw(gameBoard) {
@@ -67,4 +70,19 @@ function addSegments() {
     }
 
     newSegments = 0;
+}
+
+function increaseSnakeSpeed() {
+    if (snakeBody.length === 11) {
+        snakeSpeed = 7
+    }
+    if (snakeBody.length === 21) {
+        snakeSpeed = 8
+    }
+    if (snakeBody.length === 31) {
+        snakeSpeed = 9
+    }
+    if (snakeBody.length === 41) {
+        snakeSpeed = 10
+    }
 }

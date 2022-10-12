@@ -5,6 +5,7 @@ import { outsideGrid } from './grid.js'
 let lastRenderTime = 0;
 let gameOver = false;
 const gameBoard = document.getElementById('game-board')
+const scoreBoard = document.getElementById('score-board')
 
 // This main game tick function. window.requestAnimationFrame(main) is basically creating a game tick, 
 // i.e. a function that runs every second to calculate snake speed and run the two main game functions, update() and draw()
@@ -32,7 +33,9 @@ window.requestAnimationFrame(main)
 function update() {
     updateSnake()
     updateFood()
+    updateScore()
     checkDeath()
+    
 }
 
 function draw() {
@@ -45,4 +48,8 @@ function draw() {
 
 function checkDeath() {
     gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
+}
+
+function updateScore() {
+    scoreBoard.innerHTML = `Score: ${snakeBody.length - 1}`
 }
