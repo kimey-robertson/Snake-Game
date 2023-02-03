@@ -13,7 +13,7 @@ const scoreBoard = document.getElementById('score-board')
 function main(currentTime) {
     if (gameOver) {
         if (confirm(`You lost. Your score was ${snakeBody.length - 1}. Press ok to restart.`)) {
-            window.location = '/Snake-Game/'
+            window.location = 'https://kimey-robertson.github.io/Snake-Game/'
         }
         return
     }
